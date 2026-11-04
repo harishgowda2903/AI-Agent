@@ -1,6 +1,10 @@
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
+import sys
+
+#make sure the console can print emojis/unicode on Windows
+sys.stdout.reconfigure(encoding="utf-8")
 
 #load environment variables from .env file
 load_dotenv()
@@ -14,4 +18,4 @@ response = client.chat.completions.create(model = os.getenv("MODEL"),
                                                        "content": "Hello, AI!"}])
 
 #display the response
-print(response.choices[0].
+print(response.choices[0].message.content)
